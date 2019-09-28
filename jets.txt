@@ -1,5 +1,6 @@
-Fighter, Hornet, 1190, 1089, 70
-Fighter, Harrier, 1300, 1000, 30
-Fighter, Lightning, 1250, 1200, 300
-Cargo, Greyhound, 250, 2000, 25
-Cargo, Herc, 150, 2200, 20
+Fighter, Super Hornet, 777, 2069, 66900000
+Fighter, Lightning II, 800, 1367, 107700000
+Cargo, Greyhound, 289, 1491, 40010000
+Cargo, Super Stallion, 173, 621, 24360000
+Other, Cirrus SR22, 210, 1207, 629900
+Trainer, Texan 2, 320, 1036, 4272000

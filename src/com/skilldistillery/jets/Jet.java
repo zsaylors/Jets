@@ -20,11 +20,11 @@ public abstract class Jet {
 	}
 
 	//M E T H O D S
-	
 	public String toString() {
-		//System.out.printf("'%-5d'", model, );
-		 return model + " " + getSpeed() + " " + getRange() + " " + getPrice() ;
-}
+		StringBuilder p = new StringBuilder("Model: " + getModel() + "  --  Speed: " + getSpeed() +
+										"  --  Range: " + getRange() + "  --  Price: " + getPrice() );
+		return p.toString();
+	}
 	
 	public void fly() {
 		System.out.printf(model + " can fly for %.2f hours%n", (getRange() / getSpeed()));

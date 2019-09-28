@@ -1,7 +1,9 @@
 package com.skilldistillery.jets;
 
 public class CargoPlane extends Jet implements CargoCarrier {
-
+	//F I E L D S
+	
+	//C O N S T R U C T O R S
 	public CargoPlane() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -12,12 +14,7 @@ public class CargoPlane extends Jet implements CargoCarrier {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String toString() {
-		StringBuilder p = new StringBuilder("Model: " + getModel() + "  --  Speed: " + getSpeed() +
-										"  --  Range: " + getRange() + "  --  Price: " + getPrice() );
-		return p.toString();
-	}
-
+	//M E T H O D S
 	@Override
 	public void loadCargo() {
 		System.out.println("Cargo loaded!");
