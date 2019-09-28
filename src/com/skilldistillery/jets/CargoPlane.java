@@ -1,6 +1,6 @@
 package com.skilldistillery.jets;
 
-public class CargoPlane extends Jet {
+public class CargoPlane extends Jet implements CargoCarrier {
 
 	public CargoPlane() {
 		super();
@@ -13,6 +13,13 @@ public class CargoPlane extends Jet {
 	}
 
 	public String toString() {
-		 return getModel() + " " + getSpeed() + " " + getRange() + " " + getPrice() ;
+		StringBuilder p = new StringBuilder("Model: " + getModel() + "  --  Speed: " + getSpeed() +
+										"  --  Range: " + getRange() + "  --  Price: " + getPrice() );
+		return p.toString();
+	}
+
+	@Override
+	public void loadCargo() {
+		System.out.println("Cargo loaded!");
 	}
 }

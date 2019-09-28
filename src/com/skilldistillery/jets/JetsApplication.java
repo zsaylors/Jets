@@ -3,25 +3,16 @@ package com.skilldistillery.jets;
 import java.util.Scanner;
 
 public class JetsApplication {
-	private AirField airField;
-	//AirField airField = new AirField(null);
-	
+	//private AirField airField;	
 	Scanner kb = new Scanner(System.in);
 	AirField a = new AirField(null);
 	
 	public static void main(String[] args) {
 		JetsApplication j = new JetsApplication();
-		//Jets h = new Jets();
-		//AirField a = new AirField(null);
-		//System.out.println(a.getJetList())
-		//System.out.println(a.createJetList());
-		//System.out.println(a.createJetList().get(0)[0]);
 		j.launch();
-		//kb.close();
 	}
 
 	private void launch() {
-		System.out.println(a.getJetList());
 		displayUderMenu(kb);
 	}
 	
@@ -33,31 +24,32 @@ public class JetsApplication {
 			
 			switch(userChoice) {
 			case "1":
-				System.out.println(a.getJetList());
+				a.listFleet();
 				break;
 			case "2":
+				a.flyAll();
 				break;
 			case "3":
-				//a.fastestJet2(a.listJetFleet());
-				//a.fastestJet();
+				a.fastestJet();
 				break;
 			case "4":
-				System.out.println("placeholder");
+				a.longestRange();
 				break;
 			case "5":
-				System.out.println("placeholder");
+				a.addCargo();
 				break;
 			case "6":
-				System.out.println("placeholder");
+				a.dogFight();
 				break;
 			case "7":
-				System.out.println("placeholder");
+				a.addJet();
 				break;
 			case "8":
-				System.out.println("placeholder");
+				a.deleteJet();
 				break;
 			case "9":
 				run = false;
+				System.out.println("Goodbye.");
 				break;
 			default:
 				System.out.println("That is an invalid entry.  Enter a value 1 - 9.");
@@ -80,25 +72,12 @@ public class JetsApplication {
 											 + "9.  Quit");	
 		System.out.println(menu);
 	}
-//	
-//	public void flyAllJets() {
-//	}
-//	
-//	public void fastestJet() {
-//	}
-//	
-//	public void longestRange() {
-//	}
-//	
-//	public void dogFight() {
-//	}
-//	
-//	public void addJet() {
-//	}
-//	
-//	public void allCargoJets() {
-//	}
-//
-//	public void removeJet() {
-//	}
 }
+
+
+//Additional Objectives when finished:
+//1.  Look into if there are any stretch goals I want to implement
+//2.  Consider adding extra features/ a user story
+//3.  Clean up jet list to make it a little more realistic or ... fun ( to go with user story )
+//4.  Maybe add some Unicode.
+//5.  try switching for loops to for each loops for practice.

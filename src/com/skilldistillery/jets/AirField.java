@@ -6,11 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Scanner;
 
 public class AirField {
 	//F I E L D S
 	private List<Jet> jetList = new ArrayList<>();
+	private Scanner kb = new Scanner(System.in);
 	
 	//C O N S T R U C T O R S
 	public AirField(List<Jet> jetList) {
@@ -27,12 +28,6 @@ public class AirField {
 		
 	}
 	
-	
-//	public void parkJet(Jet j) {
-////		System.out.println(j);
-//		this.jetList.add(j);
-//	}
-	
 	// Returns jet list from the file jets.txt
 	public List<Jet> createJetList() {
 		try {
@@ -45,20 +40,15 @@ public class AirField {
 				String model = newJet[1];
 				double speed = Double.parseDouble(newJet[2]);
 				int range = Integer.parseInt(newJet[3]);
-				int price = Integer.parseInt(newJet[3]);
+				int price = Integer.parseInt(newJet[4]);
 				
-				if (newJet[0].contentEquals("Fighter")) {
+				if (newJet[0].equalsIgnoreCase("Fighter")) {
 					jetList.add(new Jets(model, speed, range, price));
-				} else if (newJet[0].contentEquals("Cargo")) {
+				} else if (newJet[0].equalsIgnoreCase("Cargo")) {
 					jetList.add(new CargoPlane(model, speed, range, price));
 				}
-				
-				
-				//				jetList.add(newJet);
-				
 			}
 			br.close();
-			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -66,63 +56,105 @@ public class AirField {
 		}	
 		return jetList;
 	}
-}
+
+	// M E N U   I T E M S
+	// MENU OPTION 1
+	public void listFleet() {
+		for (int i = 0; i < jetList.size(); i++) {
+			System.out.println(jetList.get(i).toString());
+		}
+	}
 	
-//	public Jet listJetFleet() {
-//		Jet j = new Jets();
-//		for (int i = 0; i < jetList.size(); i++) {                         //// Change 5 to jet.length/size
-//			String model = jetList.get(i)[1];
-//			double speed = Double.parseDouble(jetList.get(i)[2]);
-//			int range = Integer.parseInt(jetList.get(i)[3]);
-//			int price = Integer.parseInt(jetList.get(i)[3]);
-//			if (jetList.get(i)[0].equalsIgnoreCase("Fighter")) {
-//				j = new Jets(model, speed, range, price);
-//
-//				return j;
-//			} 
-//		}
-//		return j;
-//	}
-//	
-//	public Jet listCargoFleet() {
-//		Jet c = new CargoPlane();
-//		for (int i = 0; i < jetList.size(); i++) {                         //// Change 5 to jet.length/size
-//			String model = jetList.get(i)[1];
-//			double speed = Double.parseDouble(jetList.get(i)[2]);
-//			int range = Integer.parseInt(jetList.get(i)[3]);
-//			int price = Integer.parseInt(jetList.get(i)[3]);
-//			if (jetList.get(i)[0].equalsIgnoreCase("Cargo")) {
-//				c = new CargoPlane(model, speed, range, price);
-//				System.out.println(c.toString());	
-//				return c;
-//			}
-//		}
-//		return c;
-//	}
-//	
-//	public void fastestJet() {
-//		double fastest = 0;
-//		String fastestJet = "";
-//		for (int i = 0; i < jetList.size(); i++) {
-//			if (jetList.get(i)[0].equalsIgnoreCase("Fighter")) {
-//				if (fastest < Double.parseDouble(jetList.get(i)[2])) {
-//					fastest = Double.parseDouble(jetList.get(i)[2]);
-//					fastestJet = jetList.get(i)[1];	
-//				}
-//			}
-//		}
-//		System.out.println(fastestJet);
-//	}
-//
-//	public void fastestJet2(Jet j) {
-//		double fastest = 0;
-//		String fastestJet = "";
-//		for (int i = 0; i < jetList.size(); i++) {
-//			if (fastest < j.getSpeed()) {
-//				fastest = j.getSpeed();
-//				fastestJet = j.getModel();
-//			}
-//		}
-//		System.out.println(fastestJet);
-//	} 
-//}
+	// MENU OPTION 2
+	public void flyAll() {
+		for (int i = 0; i < jetList.size(); i++) {
+			jetList.get(i).fly();
+		}
+	}
+	
+	// MENU OPTION 3
+	public void fastestJet() {
+		double fastest = 0;
+		String fastestJet = "";
+		for (int i = 0; i < jetList.size(); i++) {
+			if (fastest < jetList.get(i).getSpeed()) {
+				fastest = jetList.get(i).getSpeed();
+				fastestJet = jetList.get(i).toString();
+			}
+		}
+		System.out.println("Fastest jet in inventory:\n" + fastestJet);
+	}
+	
+	// MENU OPTION 4
+	public void longestRange() {
+		int longestRange = 0;
+		String rangeJet = "";
+		for (int i = 0; i < jetList.size(); i++) {
+			if (longestRange < jetList.get(i).getRange()) {
+				longestRange = jetList.get(i).getRange();
+				rangeJet = jetList.get(i).toString();
+			}
+		}
+		System.out.println("Jet with longest range in inventory:\n" + rangeJet);
+	}
+	
+	// MENU OPTION 5
+	public void addCargo() {
+		for (int i = 0; i < jetList.size(); i++) {
+			if (jetList.get(i) instanceof CargoPlane) {
+				System.out.print(jetList.get(i).getModel() + " ");
+				((CargoPlane) jetList.get(i)).loadCargo();
+			}
+		}
+	}
+	
+	// MENU OPTION 6
+	public void dogFight() {
+		for (int i = 0; i < jetList.size(); i++) {
+			if (jetList.get(i) instanceof Jets) {
+				System.out.print(jetList.get(i).getModel() + " ");
+				((Jets) jetList.get(i)).fight();
+			}
+		}
+	}
+	
+	// MENU ITEM 7
+	public void addJet() {
+		System.out.println("What type of plane would you like to add?\n1.Fighter\n2.Cargo");
+		String jetChoice = kb.nextLine();
+		System.out.print("Enter model: ");
+		String model = kb.next();
+		System.out.print("Enter speed: ");
+		double speed = kb.nextDouble();
+		System.out.print("Enter range: ");
+		int range = kb.nextInt();
+		System.out.print("Enter price: ");
+		int price = kb.nextInt();
+		
+		switch(jetChoice) {
+			case "Fighter":
+			case "fighter":
+			case "1":
+				jetList.add(new Jets(model, speed, range, price));
+				break;
+			case "Cargo":
+			case "cargo":
+			case "2":
+				jetList.add(new Jets(model, speed, range, price));
+				break;
+			default:
+				System.out.println("Invalid choice.");
+		}	
+	}
+	
+	// MENU ITEM 8
+	public void deleteJet() {
+		System.out.println("Select a jet to delete: ");
+		for (int i = 0; i < jetList.size(); i++) {
+			System.out.println((i + 1) + ". "+ jetList.get(i).getModel());	
+		}
+		int deleteInput = kb.nextInt();
+		System.out.println(jetList.get(deleteInput - 1) + " has been removed.");
+		jetList.remove(deleteInput - 1);
+	}	
+}

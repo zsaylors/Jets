@@ -1,6 +1,6 @@
 package com.skilldistillery.jets;
 
-public class Jets extends Jet {
+public class Jets extends Jet implements CombatReady {
 
 	public Jets() {
 		super();
@@ -11,6 +11,12 @@ public class Jets extends Jet {
 	}
 	
 	public String toString() {
-		 return this.getModel() + " " + getSpeed() + " " + getRange() + " " + getPrice() ;
+		StringBuilder p = new StringBuilder("Model: " + getModel() + "  --  Speed: " + getSpeed() +
+										"  --  Range: " + getRange() + "  --  Price: " + getPrice() );
+		return p.toString();
+	}
+	
+	public void fight() {
+		System.out.println("It's 2019. Good luck with that dogfight happening!");
 	}
 }

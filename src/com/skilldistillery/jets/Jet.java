@@ -20,8 +20,14 @@ public abstract class Jet {
 	}
 
 	//M E T H O D S
-	public String fly() {
-		return price + " " + model;
+	
+	public String toString() {
+		//System.out.printf("'%-5d'", model, );
+		 return model + " " + getSpeed() + " " + getRange() + " " + getPrice() ;
+}
+	
+	public void fly() {
+		System.out.printf(model + " can fly for %.2f hours%n", (getRange() / getSpeed()));
 	}
 	
 	public double getSpeedInKnotsandMach() {
