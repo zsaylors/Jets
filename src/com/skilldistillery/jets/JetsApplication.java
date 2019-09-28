@@ -1,3 +1,16 @@
+//Must do's:
+//Clean up text file
+//Change messages for delete to just say model
+
+//Additional Objectives if time permits later:
+//1.  Look into if there are any stretch goals I want to implement.
+//2.  Consider adding extra features or a user story.
+//3.  Clean up jet list to make it a little more realistic or fun (to go with user story).
+//4.  Maybe add some Unicode.
+//5.  Try switching for loops to for each loops for practice.
+//6.  Add exceptions to prevent code from breaking
+//7.  Add a new plane type such as helos.
+
 package com.skilldistillery.jets;
 
 import java.util.Scanner;
@@ -5,7 +18,7 @@ import java.util.Scanner;
 public class JetsApplication {
 	//private AirField airField;	
 	Scanner kb = new Scanner(System.in);
-	AirField a = new AirField(null);
+	private AirField airField = new AirField(null);
 	
 	public static void main(String[] args) {
 		JetsApplication j = new JetsApplication();
@@ -24,28 +37,28 @@ public class JetsApplication {
 			
 			switch(userChoice) {
 			case "1":
-				a.listFleet();
+				airField.listFleet();
 				break;
 			case "2":
-				a.flyAll();
+				airField.flyAll();
 				break;
 			case "3":
-				a.fastestJet();
+				airField.fastestJet();
 				break;
 			case "4":
-				a.longestRange();
+				airField.longestRange();
 				break;
 			case "5":
-				a.addCargo();
+				airField.addCargo();
 				break;
 			case "6":
-				a.dogFight();
+				airField.dogFight();
 				break;
 			case "7":
-				a.addJet();
+				airField.addJet();
 				break;
 			case "8":
-				a.deleteJet();
+				airField.deleteJet();
 				break;
 			case "9":
 				run = false;
@@ -73,11 +86,3 @@ public class JetsApplication {
 		System.out.println(menu);
 	}
 }
-
-
-//Additional Objectives when finished:
-//1.  Look into if there are any stretch goals I want to implement
-//2.  Consider adding extra features/ a user story
-//3.  Clean up jet list to make it a little more realistic or ... fun ( to go with user story )
-//4.  Maybe add some Unicode.
-//5.  try switching for loops to for each loops for practice.

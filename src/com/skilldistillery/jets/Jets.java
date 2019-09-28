@@ -17,6 +17,6 @@ public class Jets extends Jet implements CombatReady {
 	}
 	
 	public void fight() {
-		System.out.println("It's 2019. Good luck with that dogfight happening!");
+		System.out.println(" It's 2019. Good luck with that dogfight happening!");
 	}
 }
