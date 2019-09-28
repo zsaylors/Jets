@@ -1,0 +1,5 @@
+Fighter, Hornet, 1190, 1089, 70
+Fighter, Harrier, 1300, 1000, 30
+Fighter, Lightning, 1250, 1200, 300
+Cargo, Greyhound, 250, 2000, 25
+Cargo, Herc, 150, 2200, 20
