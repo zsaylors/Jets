@@ -14,6 +14,7 @@ public class FighterJet extends Jet implements CombatReady {
 	
 	//M E T H O D S
 	public void fight() {
-		System.out.println(" It's 2019. Good luck with that dogfight happening!");
+		System.out.println(": No dog fighting while in continental US.\n\t\t. . ."
+				+ "Maybe draw something in the sky instead?");
 	}
 }

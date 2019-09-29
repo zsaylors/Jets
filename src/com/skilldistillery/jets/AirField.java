@@ -28,12 +28,14 @@ public class AirField {
 	}
 
 	// Returns jet list from the file jets.txt
-	public List<Jet> createJetList() {
+	private List<Jet> createJetList() {
 		try {
+			// Imports text
 			BufferedReader br = new BufferedReader(new FileReader("jets.txt"));
 			String name;
 			String[] newJet = null;
 
+			//Copies text to the appropriate Jet child.
 			while ((name = br.readLine()) != null) {
 				newJet = name.split(", ");
 				String model = newJet[1];
@@ -61,25 +63,26 @@ public class AirField {
 	}
 
 	// M E N U I T E M S
-	// MENU OPTION 1
+	// MENU OPTION 1 : LIST FLEET
 	public void listFleet() {
 		for (int i = 0; i < jetList.size(); i++) {
 			System.out.println(jetList.get(i).toString());
 		}
 	}
 
-	// MENU OPTION 2
+	// MENU OPTION 2: FLY ALL AIRCRAFT
 	public void flyAll() {
 		for (int i = 0; i < jetList.size(); i++) {
 			jetList.get(i).fly();
 		}
 	}
 
-	// MENU OPTION 3
+	// MENU OPTION 3: FLY SINGLE AIRCRAFT
 	public void flySingle() {
 		if (jetList.size() != 0) {
-			System.out.println("Select a jet to fly: ");
-			for (int i = 0; i < jetList.size(); i++) {
+			System.out.println("Select an aircraft to fly: ");
+			int i;
+			for (i = 0; i < jetList.size(); i++) {
 				System.out.println((i + 1) + ". " + jetList.get(i).getModel());
 			}
 			try {
@@ -92,7 +95,7 @@ public class AirField {
 		}
 	}
 
-	// MENU OPTION 4
+	// MENU OPTION 4: VIEW FASTEST AIRCRAFT
 	public void fastestJet() {
 		double fastest = 0;
 		String fastestJet = "";
@@ -102,10 +105,10 @@ public class AirField {
 				fastestJet = jetList.get(i).toString();
 			}
 		}
-		System.out.println("Fastest jet in inventory:\n" + fastestJet);
+		System.out.println("Fastest aircraft in inventory:\n" + fastestJet);
 	}
 
-	// MENU OPTION 5
+	// MENU OPTION 5: VIEW AIRCRAFT WITH LONGEST RANGE
 	public void longestRange() {
 		int longestRange = 0;
 		String rangeJet = "";
@@ -115,43 +118,47 @@ public class AirField {
 				rangeJet = jetList.get(i).toString();
 			}
 		}
-		System.out.println("Plane with longest range in inventory is:\n" + rangeJet);
+		System.out.println("Aircraft with longest range in inventory is:\n" + rangeJet);
 	}
 
-	// MENU OPTION 6
+	// MENU OPTION 6: LOAD ALL CARGO AIRCRAFT
 	public void addCargo() {
 		String printOut = "";
 		for (int i = 0; i < jetList.size(); i++) {
 			if (jetList.get(i) instanceof CargoPlane) {
 				printOut = (jetList.get(i).getModel() + " ");
-				System.out.println(printOut);
+				System.out.print(printOut);
 				((CargoPlane) jetList.get(i)).loadCargo();
 			}
 		}
 		if (printOut.contentEquals("")) {
-			System.out.println("There are no cargo planes in the inventory!\nConsider adding one with with option 9.");
+			System.out.println(
+					"There are no cargo planes in the inventory!\n" + "Consider adding one with with option 9.");
 		}
 	}
 
-	// MENU OPTION 7
+	// MENU OPTION 7: DOGFIGHT!
 	public void dogFight() {
 		String printOut = "";
 		for (int i = 0; i < jetList.size(); i++) {
 			if (jetList.get(i) instanceof FighterJet) {
 				printOut = (jetList.get(i).getModel() + " ");
-				System.out.println(printOut);
+				System.out.print(printOut);
 				((FighterJet) jetList.get(i)).fight();
 			}
 		}
 		if (printOut.contentEquals("")) {
-			System.out.println("There are no fighter jets in the inventory!\nConsider adding one with with option 9.");
+			System.out.println(
+					"There are no fighter jets in the inventory!\n" + "Consider adding one with with option 9.");
 		}
 	}
 
-	// MENU OPTION 8
+	// MENU OPTION 8: TRAIN
 	public void train() {
+		String printOut = "";
 		for (int i = 0; i < jetList.size(); i++) {
 			if (jetList.get(i) instanceof Trainer) {
+				printOut = (jetList.get(i).getModel() + " ");
 				boolean doTrain = true;
 				while (doTrain) {
 					trainMenu();
@@ -176,6 +183,7 @@ public class AirField {
 						((Trainer) jetList.get(i)).barrelRoll();
 						break;
 					case "7":
+						kb.nextLine();
 						doTrain = false;
 						break;
 					default:
@@ -186,18 +194,21 @@ public class AirField {
 				break;
 			}
 		}
+		if (printOut.contentEquals("")) {
+			System.out.println("There are no trainers in the inventory!\n" + "Consider adding one with with option 9.");
+		}
 	}
 
-	// MENU OPTION 8 MENU:
+	// MENU OPTION 8 TRAINING MENU
 	private void trainMenu() {
 		System.out.println("\nWhat would you like to train?\n" + "1.  Touch and Goes\n" + "2.  Radio Calls\n"
 				+ "3.  Stalls\n" + "4.  Spins\n" + "5.  Loops\n" + "6.  Barrel Rolls\n" + "7.  Quit\n");
 	}
 
-	// MENU OPTION 9
+	// MENU OPTION 9: ADD AIRCRAFT TO FLEET
 	public void addJet() {
-		System.out
-				.println("What type of plane would you like to add?\n1. Fighter\n2. Cargo\n3." + " Trainer\n4. Other");
+		System.out.println(
+				"What type of plane would you like to add?\n1. Fighter\n2. " + "Cargo\n3." + " Trainer\n4. Other");
 		String jetChoice = kb.nextLine();
 		System.out.print("Enter model: ");
 		String model = kb.next();
@@ -218,7 +229,7 @@ public class AirField {
 		case "Cargo":
 		case "cargo":
 		case "2":
-			jetList.add(new FighterJet(model, speed, range, price));
+			jetList.add(new CargoPlane(model, speed, range, price));
 			break;
 		case "Trainer":
 		case "trainer":
@@ -235,7 +246,7 @@ public class AirField {
 		}
 	}
 
-	// MENU OPTION 10
+	// MENU OPTION 10: REMOVE AIRCRAFT FROM FLEET
 	public void deleteJet() {
 		if (jetList.size() != 0) {
 			System.out.println("Select a jet to delete: ");
@@ -257,7 +268,7 @@ public class AirField {
 	// are in inventory.
 	public void noPlanes() {
 		if (jetList.size() == 0) {
-			System.out.println("There are no planes in the inventory.\nConsider adding some with with option 9.");
+			System.out.println("There are no planes in the inventory.\n" + "Consider adding some with with option 9.");
 		}
 	}
 }

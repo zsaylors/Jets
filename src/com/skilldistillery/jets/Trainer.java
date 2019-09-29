@@ -36,7 +36,7 @@ public class Trainer extends Jet implements Train {
 				+ "atc: RadsaR CpasjTact\n"
 				+ "pilot: Come again??\n"
 				+ "atc: Radar Contact\n\n"
-				+ "\t. . . Maybe work on those comms . . . ");
+				+ "\t. . . Maybe work on hearing those comms . . . ");
 	}
 
 	@Override
@@ -65,28 +65,32 @@ public class Trainer extends Jet implements Train {
 
 	@Override
 	public void loop() {
-		int goodManueverChance = (int) (Math.random()*100);
+		double goodManueverChance = (3.5 + (Math.random()));
 		String[] loop = {"Great", "A little too slow at the top..."};
 		
-		if (goodManueverChance < 60) {
-			System.out.printf("%.2f G's pulled%n", 3 + (Math.random()*2));
-			System.out.println(loop[0]);
-		} else {
-			System.out.printf("%.2f G's pulled%n", 2.5 + (Math.random()));
+		if (goodManueverChance < 4) {
+			//System.out.printf("%.2f G's pulled%n", 3 + (Math.random()*2));
+			System.out.printf("%.2f G's pulled%n", goodManueverChance);
 			System.out.println(loop[1]);
+		} else {
+			//System.out.printf("%.2f G's pulled%n", 2.5 + (Math.random()));
+			System.out.printf("%.2f G's pulled%n", goodManueverChance);
+			System.out.println(loop[0]);
 		}
 	}
 
 	@Override
 	public void barrelRoll() {
-		int goodManueverChance = (int) (Math.random()*100);
+		double goodManueverChance = (2.0 + (Math.random()));
 		String[] bRoll = {"Good!", "It's supposed to be a smooth manuever!"};
 		
-		if (goodManueverChance < 30) {
-			System.out.printf("%.2f G's pulled%n", 2.3 + (Math.random()));
+		if (goodManueverChance < 2.5) {
+			//System.out.printf("%.2f G's pulled%n", 2.0 + (Math.random()));
+			System.out.printf("%.2f G's pulled%n", goodManueverChance);
 			System.out.println(bRoll[0]);
 		} else {
-			System.out.printf("%.2f G's pulled%n", 3.5 + (Math.random()));
+			//System.out.printf("%.2f G's pulled%n", 3.5 + (Math.random()));
+			System.out.printf("%.2f G's pulled%n", goodManueverChance);
 			System.out.println(bRoll[1]);
 		}
 	}

@@ -1,8 +1,6 @@
 package com.skilldistillery.jets;
 
-interface Train {
-	   ////// may need to be moved!
-	
+interface Train {	
 	public void touchAndGoes();
 	
 	public void radioComms();
