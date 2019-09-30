@@ -14,7 +14,7 @@ public class FighterJet extends Jet implements CombatReady {
 	
 	//M E T H O D S
 	public void fight() {
-		String[] fightList = {": No dog fighting while in continental US.\n\t\t. . . Maybe draw something in the sky instead?",
+		String[] fightList = {": No dogfighting while in continental US.\n\t\t. . . Maybe draw something in the sky instead.",
 				": Does anybody else hear Kenny Loggins?"};
 		
 		System.out.println(fightList[(int) Math.round(Math.random() * (fightList.length - 1))]);

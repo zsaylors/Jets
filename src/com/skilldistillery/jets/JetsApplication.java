@@ -82,7 +82,7 @@ public class JetsApplication {
 
 	private void printedMenu() {
 		StringBuilder menu = new StringBuilder(
-				"\n| \uD83D\uDE81 Navy Fleet Fly In  \uD83D\uDEE9 |\n\n" 
+				"\n| \uD83D\uDE81 Fleet Fly In  \uD83D\uDEE9 |\n\n" 
 		+ "1.  List fleet\n" 
 		+ "2.  Fly all aircraft\n" 
 		+ "3.  Fly single aircraft\n"
@@ -91,8 +91,8 @@ public class JetsApplication {
 		+ "6.  Load all cargo aircraft\n" 
 		+ "7.  Dogfight!\n"
 	    + "8.  Train\n"
-		+ "9.  Add a aircraft to fleet\n"
-		+ "10. Remove a aircraft from fleet\n"
+		+ "9.  Add aircraft to fleet\n"
+		+ "10. Remove aircraft from fleet\n"
 		+ "11. Quit");
 		System.out.println(menu);
 	}
