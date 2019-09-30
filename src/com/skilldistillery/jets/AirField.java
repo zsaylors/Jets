@@ -41,9 +41,10 @@ public class AirField {
 				start = "myJetList.txt";
 				whichFile = false;
 			} else {
-				System.out.println("Invalid entry.  Try again (pick 1 or 2");
+				System.out.println("Invalid entry.  Try again (pick 1 or 2)");
 			}
 		}
+		kb.nextLine();
 		return start;
 	}
 	
