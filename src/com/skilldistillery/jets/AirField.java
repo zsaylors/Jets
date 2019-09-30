@@ -27,11 +27,32 @@ public class AirField {
 		this.jetList = jetList;
 	}
 
+	
+	public String starterFile() {
+		String start = null;
+		boolean whichFile = true;
+		while(whichFile) {
+			System.out.println("Would you like to:\n1. Use the default starter file.\n2. Use previously saved file.");
+			String starterFile = kb.next();
+			if (starterFile.equals("1")) {
+				start = "jets.txt";
+				whichFile = false;
+			} else if (starterFile.equals("2")) {
+				start = "myJetList.txt";
+				whichFile = false;
+			} else {
+				System.out.println("Invalid entry.  Try again (pick 1 or 2");
+			}
+		}
+		return start;
+	}
+	
+	
 	// Returns jet list from the file jets.txt
 	private List<Jet> createJetList() {
 		try {
-			// Imports text
-			BufferedReader br = new BufferedReader(new FileReader("jets.txt"));
+			
+			BufferedReader br = new BufferedReader(new FileReader(starterFile()));
 			String name;
 			String[] newJet = null;
 

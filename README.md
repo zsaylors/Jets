@@ -7,6 +7,8 @@
 ### Overview
 The Fleet Fly In (or Jets project) loads a list of aircraft and allows the user to pick different options based on the type of aircraft.  Type being fighter jet, cargo plane, trainer plane, or "other" which covers all other types of aircraft.  Below is a description of each menu item.
 
+First the program will prompt the user to select whether they want to use the default list or their saved data.
+
 1. **List Fleet**:
 This will list all current aircraft in the jet list (`List<Jet> jetList`).  It will list the aircraft model, speed (mph), range (mi), and the cost.  Note, the speed of all default planes is the cruise speed.  When the java program starts, it will populate the list from "jets.txt" containing six different aircraft.  Other menu options will allow the user to manipulate this list by adding or deleting files.
 
