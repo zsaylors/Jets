@@ -1,8 +1,8 @@
-#Jets Project
+# Jets Project
 
-####Title: Fleet Fly In
+####vTitle: Fleet Fly In
 
-##Week Three Skill Distillery Homework
+## Week Three Skill Distillery Homework
 
 ### Overview
 The Fleet Fly In (or Jets project) loads a list of aircraft and allows the user to pick different options based on the type of aircraft.  Type being fighter jet, cargo plane, trainer plane, or "other" which covers all other types of aircraft.  Below is a description of each menu item.
